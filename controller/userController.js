@@ -31,7 +31,45 @@ function registerUser (req,res,next){
     }
 
 
+// User Login and validation
+function loginUser(req, res, next){
+   user.findOne({
+    where:{username:req.body.username}
+   })
+   .then(function(result){
+       if(result !== null){
+        console.log("User is found")
+            // dataValues.password = password retrived from Database
+            if(req.body.password === result.dataValues.password){
+                res.json({
+                    user:req.body.username,
+                    login:"sucess"
+                })
+            }else{
+                res.json({
+                    user:req.body.username,
+                    login:"Password did not match."
+                })
+            }
+
+       }
+       else{
+           console.log("User not registered")
+       }
+   })
+   .catch(function(err){
+       next(err)
+   })
+
+}
+
+
+
+
+
+
 
 module.exports = { 
-    registerUser 
+    registerUser ,
+    loginUser
 };
