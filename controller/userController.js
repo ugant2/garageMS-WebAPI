@@ -64,6 +64,15 @@ function loginUser(req, res, next){
 }
 
 
+function getAllUsers(req,res,next){
+
+	// send all users from db
+
+	user.findAll()
+	// .then()
+}
+
+
 
 
 
@@ -71,5 +80,6 @@ function loginUser(req, res, next){
 
 module.exports = { 
     registerUser ,
-    loginUser
+    loginUser,
+    getAllUsers
 };
