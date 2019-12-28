@@ -108,7 +108,33 @@ function deleteUser(req, res, next){
     })
 }
 
-
+// Update Users
+function updateUser(req, res, next){
+    user.update({
+        username:req.body.username,
+        password:req.body.password,
+        email:req.body.email,
+        phone:req.body.phone,
+        location:req.body.location
+        //image:req.body.image
+    },{
+        where:{
+            id:req.params.id
+        }
+    })
+    .then(function(result){
+        if(result === 0){
+            res.json({status:404, message:'User Not found.'})
+        }
+        else{
+            res.json({status:200, message:'User Updated.'})
+        }
+    })
+    .catch(function(err){
+        res.json({status:500, message:'Error updateing user'.user.username})
+    })
+    
+}
 
 
 
@@ -117,5 +143,6 @@ module.exports = {
     registerUser ,
     loginUser,
     getAllUsers,
-    deleteUser
+    deleteUser,
+    updateUser
 };
