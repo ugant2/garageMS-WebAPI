@@ -1,7 +1,7 @@
 "use strict";
 const express = require('express');
 var bodyParser = require('body-parser');
-var userController = require('./controller/userController.js');
+var userController = require('./controllers/userController.js');
 var multer  = require('multer');
 var upload = multer({ dest: 'images/' });
 var app = express();
