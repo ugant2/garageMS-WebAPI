@@ -11,8 +11,8 @@ function registerUser (req,res,next){
         password:req.body.password,
         email:req.body.email,
         phone:req.body.phone,
-        location:req.body.location
-        //image:req.body.image
+        location:req.body.location,
+        image:req.body.image
     })
     .then(function(result){
     
