@@ -2,6 +2,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 var userController = require('./controller/userController.js');
+var stockController = require('./controller/stockController.js');
 var multer  = require('multer');
 var upload = multer({ dest: 'images/' });
 var app = express();
@@ -28,11 +29,18 @@ app.post('/login', userController.loginUser)
 // for user delete redirection
 app.delete('/user/:id',userController.deleteUser)
 
-// for single user pdateing redirection 
+// for single user updateing redirection 
 app.put('/user/:id',userController.updateUser)
 
 // listing all users
 app.get('/users', userController.getAllUsers)
+
+
+
+// for stocks
+app.post('/stock', stockController.addStock)
+
+
 
 
 app.listen(3011);
