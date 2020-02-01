@@ -29,14 +29,14 @@ image:{
 },
 {
 
-freezeTableName: false,
+freezeTableName: true,
 tableName:'Vehicle',
 paranoid:true
 
 }
 )
 
-vehicle.sync({force: true})
+vehicle.sync({force: false})
  .then(function(){
 
  })
