@@ -87,11 +87,37 @@ function deleteVehicle(req, res, next){
 }
 
 
+// Update Vehicle
+function updateUser(req, res, next){
+    user.update({
+        vehicle_name:req.body.vehicle_name,
+        price:req.body.price,
+        brand:req.body.brand,
+        image:req.body.image
+    },{
+        where:{
+            id:req.params.id
+        }
+    })
+    .then(function(result){
+        if(result === 0){
+            res.json({status:404, message:'Vehicle Not found.'})
+        }
+        else{
+            res.json({status:200, message:'Vehicle Updated.'})
+        }
+    })
+    .catch(function(err){
+        res.json({status:500, message:'Error updateing Vehicle'.vehicle.vehicle_name})
+    })
+    
+}
 
 
 
 module.exports = { 
     addVehicle,
     listVehicle,
-    deleteVehicle
+    deleteVehicle,
+    updateVehicle
 };
