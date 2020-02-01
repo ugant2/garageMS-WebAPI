@@ -50,7 +50,41 @@ function listVehicle(req,res,next){
 }
     
 
+// Delete Vehicle
+function deleteVehicle(req, res, next){
+    if(req.params.id === null || undefined){
+        res.json({
+            status:500,
+            message:'ID not given.'
+        })
+    }
+   
+    user.destroy({
+        where:{
+            id: req.params.id
+        }
+    })
+    .then(function(result){
+        console.log(req.params.id);
+        if(result === 0){
+            res.json({
+                satus:404,
+                message:'vehicle not found'
+            })
+        }else{
+            res.status(200)
+            res.json({
+                status:200,
+                message:'vehicle deleted successfully'
+            })
 
+        }
+       
+    }) 
+    .catch(function(err){
+        next(err);
+    })
+}
 
 
 
@@ -58,5 +92,6 @@ function listVehicle(req,res,next){
 
 module.exports = { 
     addVehicle,
-    listVehicle
+    listVehicle,
+    deleteVehicle
 };
