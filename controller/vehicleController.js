@@ -59,7 +59,7 @@ function deleteVehicle(req, res, next){
         })
     }
    
-    user.destroy({
+    vehicle.destroy({
         where:{
             id: req.params.id
         }
@@ -87,9 +87,10 @@ function deleteVehicle(req, res, next){
 }
 
 
+
 // Update Vehicle
-function updateUser(req, res, next){
-    user.update({
+function updateVehicle(req, res, next){
+    vehicle.update({
         vehicle_name:req.body.vehicle_name,
         price:req.body.price,
         brand:req.body.brand,
