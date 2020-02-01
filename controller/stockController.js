@@ -29,6 +29,28 @@ function addStock (req,res,next){
     }
 
 
+// listing all stocks
+function getAllStock(req,res,next){
+	stock.findAll().then(function (result){
+            if(!result===0){
+                res.satus(200);
+            res.json({
+                data:result
+            });
+                 
+            }else{
+                res.satus(500);
+                res.json({
+                    messsage:"server error"
+                }); 
+        }
+    }).catch(function(err){
+
+    })
+}
+    
+
+
 // Delete Users
 function deleteStock(req, res, next){
     if(req.params.id === null || undefined){
@@ -73,5 +95,6 @@ function deleteStock(req, res, next){
 
 module.exports = { 
     addStock,
+    getAllStock,
     deleteStock
 };
