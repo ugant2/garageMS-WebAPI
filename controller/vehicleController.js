@@ -26,7 +26,29 @@ function addVehicle (req,res,next){
     next(err);
     })
     
-    }
+}
+
+
+// Listing
+function listVehicle(req,res,next){
+	vehicle.findAll().then(function (result){
+            if(!result===0){
+                res.satus(200);
+            res.json({
+                data:result
+            });
+                 
+            }else{
+                res.satus(500);
+                res.json({
+                    messsage:"server error"
+                }); 
+        }
+    }).catch(function(err){
+
+    })
+}
+    
 
 
 
@@ -35,5 +57,6 @@ function addVehicle (req,res,next){
 
 
 module.exports = { 
-    addVehicle
+    addVehicle,
+    listVehicle
 };
