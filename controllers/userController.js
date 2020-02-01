@@ -12,7 +12,7 @@ function registerUser (req,res,next){
         email:req.body.email,
         phone:req.body.phone,
         location:req.body.location
-        //image:req.body.image
+        // image:req.body.image
     })
     .then(function(result){
     
