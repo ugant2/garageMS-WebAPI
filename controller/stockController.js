@@ -29,7 +29,7 @@ function addStock (req,res,next){
     }
 
 
-// listing all stocks
+// List Stock
 function getAllStock(req,res,next){
 	stock.findAll().then(function (result){
             if(!result===0){
@@ -70,7 +70,7 @@ function deleteStock(req, res, next){
         if(result === 0){
             res.json({
                 satus:404,
-                message:'user not found'
+                message:'stock not found'
             })
         }else{
             res.status(200)
@@ -88,13 +88,14 @@ function deleteStock(req, res, next){
 }
 
 
-// Update Stocks
+// Update Stock
 function updateStock(req, res, next){
     stock.update({
         stock_name:req.body.stock_name,
         price:req.body.price,
         brand:req.body.brand,
         image:req.body.image
+       
     },{
         where:{
             id:req.params.id

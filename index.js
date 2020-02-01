@@ -42,6 +42,7 @@ app.get('/user', userController.getAllUsers)
 app.post('/stock', stockController.addStock)
 app.delete('/stock/:id',stockController.deleteStock)
 app.get('/stock',stockController.getAllStock)
+app.put('/stock/:id',stockController.updateStock)
 
 
 // for Vehicles
