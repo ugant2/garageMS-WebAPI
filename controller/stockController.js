@@ -29,11 +29,49 @@ function addStock (req,res,next){
     }
 
 
+// Delete Users
+function deleteStock(req, res, next){
+    if(req.params.id === null || undefined){
+        res.json({
+            status:500,
+            message:'ID not given.'
+        })
+    }
+   
+    stock.destroy({
+        where:{
+            id: req.params.id
+        }
+    })
+    .then(function(result){
+        console.log(req.params.id);
+        if(result === 0){
+            res.json({
+                satus:404,
+                message:'user not found'
+            })
+        }else{
+            res.status(200)
+            res.json({
+                status:200,
+                message:'stock deleted successfully'
+            })
+
+        }
+       
+    }) 
+    .catch(function(err){
+        next(err);
+    })
+}
+
+
 
 
 
 
 
 module.exports = { 
-    addStock
+    addStock,
+    deleteStock
 };

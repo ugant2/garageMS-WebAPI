@@ -3,6 +3,7 @@ const express = require('express');
 var bodyParser = require('body-parser');
 var userController = require('./controller/userController.js');
 var stockController = require('./controller/stockController.js');
+var vehicleController = require('./controller/vehicleController.js');
 var multer  = require('multer');
 var upload = multer({ dest: 'images/' });
 var app = express();
@@ -33,12 +34,16 @@ app.delete('/user/:id',userController.deleteUser)
 app.put('/user/:id',userController.updateUser)
 
 // listing all users
-app.get('/users', userController.getAllUsers)
+app.get('/user', userController.getAllUsers)
 
 
 
 // for stocks
 app.post('/stock', stockController.addStock)
+
+
+// for Vehicles
+app.post('/vehicle', vehicleController.addVehicle)
 
 
 

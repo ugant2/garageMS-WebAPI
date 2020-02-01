@@ -1,7 +1,7 @@
 var db = require('../configuration/dbConfig.js')
 
 
-var user = db.sequelize.define('User', {
+var vehicle = db.sequelize.define('Vehicle', {
 
 //attributes
 id: {
@@ -10,24 +10,16 @@ id: {
 	autoIncrement:true,
 	allowNull:false
 },
-username: {
+vehicle_name: {
 	type:db.Sequelize.TEXT ,
 	allowNull:false
 },
-password: {
+price: {
 	type:db.Sequelize.TEXT ,
 	allowNull:false
 },
-email:{
+brand:{
 	type:db.Sequelize.TEXT,
-	allowNull:false
-},
-phone:{
-	type:db.Sequelize.TEXT,
-	allowNull:false
-},
-location:{
-	type:db.Sequelize.TEXT ,
 	allowNull:false
 },
 image:{
@@ -38,13 +30,13 @@ image:{
 {
 
 freezeTableName: false,
-tableName:'User',
+tableName:'Vehicle',
 paranoid:true
 
 }
 )
 
- user.sync({force: true})
+vehicle.sync({force: true})
  .then(function(){
 
  })
@@ -54,6 +46,6 @@ console.log(err)
 
  })
 
-module.exports = user;
+module.exports = vehicle;
 
 

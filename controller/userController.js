@@ -65,11 +65,22 @@ function loginUser(req, res, next){
 
 
 function getAllUsers(req,res,next){
+	user.findAll().then(function (result){
+            if(!result===0){
+                res.satus(200);
+            res.json({
+                data:result
+            });
+                 
+            }else{
+                res.satus(500);
+                res.json({
+                    messsage:"server error"
+                }); 
+        }
+    }).catch(function(err){
 
-	// send all users from db
-
-	user.findAll()
-	// .then()
+    })
 }
 
 
@@ -81,28 +92,29 @@ function deleteUser(req, res, next){
             message:'ID not given.'
         })
     }
+   
     user.destroy({
         where:{
             id: req.params.id
         }
     })
     .then(function(result){
+        console.log(req.params.id);
         if(result === 0){
             res.json({
                 satus:404,
                 message:'user not found'
             })
         }else{
-            // res.json({status:200, message:'user deleted'})
+            res.status(200)
+            res.json({
+                status:200,
+                message:'user deleted successfully'
+            })
 
         }
-        console.log(result);
-        res.status(200)
-        res.json({
-            status:200,
-            message:'user deleted successfully'
-        })
-    })
+       
+    }) 
     .catch(function(err){
         next(err);
     })
