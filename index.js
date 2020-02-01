@@ -26,14 +26,8 @@ app.post('/registration', userController.registerUser)
 
 // for user login redirection
 app.post('/login', userController.loginUser)
-
-// for user delete redirection
 app.delete('/user/:id',userController.deleteUser)
-
-// for single user updateing redirection 
 app.put('/user/:id',userController.updateUser)
-
-// listing all users
 app.get('/user', userController.getAllUsers)
 
 
@@ -49,6 +43,7 @@ app.put('/stock/:id',stockController.updateStock)
 app.post('/vehicle', vehicleController.addVehicle)
 app.get('/vehicle', vehicleController.listVehicle)
 app.delete('/vehicle/:id', vehicleController.deleteVehicle)
+app.put('/vehicle/:id', vehicleController.updateVehicle)
 
 
 
