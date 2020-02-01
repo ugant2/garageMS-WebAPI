@@ -88,6 +88,33 @@ function deleteStock(req, res, next){
 }
 
 
+// Update Stocks
+function updateStock(req, res, next){
+    stock.update({
+        stock_name:req.body.stock_name,
+        price:req.body.price,
+        brand:req.body.brand,
+        image:req.body.image
+    },{
+        where:{
+            id:req.params.id
+        }
+    })
+    .then(function(result){
+        if(result === 0){
+            res.json({status:404, message:'Stock Not found.'})
+        }
+        else{
+            res.json({status:200, message:'Stock Updated.'})
+        }
+    })
+    .catch(function(err){
+        res.json({status:500, message:'Error updateing stock'.stock.stock_name})
+    })
+    
+}
+
+
 
 
 
@@ -96,5 +123,6 @@ function deleteStock(req, res, next){
 module.exports = { 
     addStock,
     getAllStock,
-    deleteStock
+    deleteStock,
+    updateStock
 };
