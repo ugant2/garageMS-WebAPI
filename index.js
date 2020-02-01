@@ -47,6 +47,7 @@ app.put('/stock/:id',stockController.updateStock)
 
 // for Vehicles
 app.post('/vehicle', vehicleController.addVehicle)
+app.get('/vehicle', vehicleController.listVehicle)
 
 
 
