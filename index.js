@@ -1,13 +1,9 @@
 "use strict";
 const express = require('express');
 var bodyParser = require('body-parser');
-<<<<<<< HEAD
-var userController = require('./controllers/userController.js');
-=======
 var userController = require('./controller/userController.js');
 var stockController = require('./controller/stockController.js');
 var vehicleController = require('./controller/vehicleController.js');
->>>>>>> 66b5e72a5cb45a7389da8a5717b731bbc6954c68
 var multer  = require('multer');
 var upload = multer({ dest: 'images/' });
 var app = express();
@@ -44,6 +40,7 @@ app.get('/user', userController.getAllUsers)
 
 // for stocks
 app.post('/stock', stockController.addStock)
+app.delete('/stock/:id',stockController.deleteStock)
 
 
 // for Vehicles
