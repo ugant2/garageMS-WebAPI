@@ -120,6 +120,7 @@ function deleteUser(req, res, next){
     })
 }
 
+
 // Update Users
 function updateUser(req, res, next){
     user.update({
