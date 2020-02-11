@@ -31,24 +31,21 @@ function addStock (req,res,next){
 
 // List Stock
 function getAllStock(req,res,next){
-	stock.findAll().then(function (result){
-            if(!result===0){
-                res.satus(200);
-            res.json({
-                data:result
-            });
-                 
-            }else{
-                res.satus(500);
-                res.json({
-                    messsage:"server error"
-                }); 
-        }
+    stock.findAll().then(function(result){
+            if(result===null){
+                res.status(404);
+            }
+                else{
+                    res.status(200);
+                    res.json({
+                        data:result
+                    })
+                }
+            
     }).catch(function(err){
 
-    })
-}
-    
+    });
+}  
 
 
 // Delete Users

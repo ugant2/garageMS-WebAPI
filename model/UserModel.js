@@ -37,14 +37,14 @@ image:{
 },
 {
 
-freezeTableName: false,
+freezeTableName: true,
 tableName:'User',
 paranoid:true
 
 }
 )
 
- user.sync({force: true})
+ user.sync({force: false})
  .then(function(){
 
  })

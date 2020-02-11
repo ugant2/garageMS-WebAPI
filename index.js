@@ -8,6 +8,8 @@ var multer  = require('multer');
 var upload = multer({ dest: 'images/' });
 var app = express();
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json('application/json'));
+app.use(express.static(__dirname + "/public"));
 
 // Index page
 app.get("/",function(req,res){
@@ -28,7 +30,7 @@ app.post('/registration', userController.registerUser)
 app.post('/login', userController.loginUser)
 app.delete('/user/:id',userController.deleteUser)
 app.put('/user/:id',userController.updateUser)
-app.get('/user', userController.getAllUsers)
+app.get('/user', userController.getAllUser)
 
 
 
@@ -41,7 +43,7 @@ app.put('/stock/:id',stockController.updateStock)
 
 // for Vehicles
 app.post('/vehicle', vehicleController.addVehicle)
-app.get('/vehicle', vehicleController.listVehicle)
+app.get('/vehicle', vehicleController.getAllVehicle)
 app.delete('/vehicle/:id', vehicleController.deleteVehicle)
 app.put('/vehicle/:id', vehicleController.updateVehicle)
 
