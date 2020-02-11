@@ -42,8 +42,8 @@ function loginUser(req, res, next){
             // dataValues.password = password retrived from Database
             if(req.body.password === result.dataValues.password){
                 res.json({
-                    user:req.body.username,
-                    login:"sucess"
+                    code:req.body.username,
+                    status:"success"
                 })
             }else{
                 res.json({
@@ -64,23 +64,22 @@ function loginUser(req, res, next){
 }
 
 
-function getAllUsers(req,res,next){
-	user.findAll().then(function (result){
-            if(!result===0){
-                res.satus(200);
-            res.json({
-                data:result
-            });
-                 
-            }else{
-                res.satus(500);
-                res.json({
-                    messsage:"server error"
-                }); 
-        }
+// List User
+function getAllUser(req,res,next){
+    user.findAll().then(function(result){
+            if(result===null){
+                res.status(404);
+            }
+                else{
+                    res.status(200);
+                    res.json({
+                        data:result
+                    })
+                }
+            
     }).catch(function(err){
 
-    })
+    });
 }
 
 
@@ -155,7 +154,7 @@ function updateUser(req, res, next){
 module.exports = { 
     registerUser ,
     loginUser,
-    getAllUsers,
+    getAllUser,
     deleteUser,
     updateUser
 };
